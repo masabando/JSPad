@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JSPad</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8">
+  <meta name="description" content="プログラミング (JavaScript)">
+  <meta name="author" content="Masamitsu Bando">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="src/favicon.png">
+  <link rel="shortcut icon" type="image/png" href="src/favicon.png">
+  <link rel="apple-touch-icon" type="image/png" href="src/icon.png">
+  <link rel="stylesheet" type="text/css" href="src/wmemo-master/wmemo.css">
+  <link rel="stylesheet" href="src/base.css">
+  <link rel="stylesheet" type="text/css" href="src/jquery/jquery-ui-1.10.4.min.css">
+  <script src="src/jquery/jquery-1.12.4.min.js"></script>
+  <script type="text/javascript" src="src/jquery/jquery-ui-1.10.4.min.js"></script>
+  <script type="text/javascript" src="src/wmemo-master/wmemo.js"></script>
+  <script src="src/sample.js"></script>
+  <script src="config.js"></script>
+  <script src="src/base.js"></script>
+</head>
+<body>
+
+  <h1 id="wmemo_gen_button">プログラミング (JavaScript)</h1>
+  <div id="wmemo_field"></div>
+
+  <div id="menu_container">
+    <div id="menu_normal">
+      <div class="menu_head">一般</div>
+      <div class="menu_item">
+        テーマ <select id="theme"></select>
+      </div>
+      <div class="menu_item">
+        フォントサイズ <select id="fontsize"></select>
+      </div>
+      <div class="menu_item">
+        サンプル <select id="sample"></select>
+      </div>
+    </div>
+    <div id="menu_canvas">
+      <div class="menu_head">Canvas</div>
+      <div class="menu_item">
+        カラーピッカー <input type="color" id="color" value="#000000">
+        <span id="colorout" class="selectable"></span>
+      </div>
+      <div class="menu_item">
+        <label><input type="checkbox" id="position_ckbox">マウス座標表示</label>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <button type="button" id="menu_button" class="button">Menu (F8)</button>
+    <label id="load_button" class="button">
+      <input type="file" accept="application/javascript" id="load_input">読込
+    </label>
+    <a id="save_button" class="button">保存</a>
+  </div>
+  <div id="submit_container" class="container">
+    <button type="button" id="submit_button" class="button">実行 (F9)</button>
+  </div>
+
+  <div id="jsbox">
+    <div id="source_container" class="container">
+      <div id="source_container_title" class="container_title">
+        ソースコード
+        <span id="filename"></span>
+      </div>
+      <textarea id="mainfunc" class="monospace"></textarea>
+    </div>
+
+    <div id="output_container" class="container">
+      <div id="output_container_title" class="container_title">
+        出力
+      </div>
+      <div id="canvas_container"></div>
+      <div>
+        <textarea id="output" class="monospace" disabled="disabled"></textarea>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="position" data-freeze="0"></div>
+  <div id="pdot"></div>
+
+</body>
+</html>

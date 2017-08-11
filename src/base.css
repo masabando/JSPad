@@ -1,0 +1,226 @@
+html, body, div, ul, ol, li, table, td, tr, th, input, textarea,
+h1, h2, h3, h4, span, p {
+  margin: 0; padding: 0;
+}
+
+html {
+  font-family: sans-serif;
+  background: #eee;
+  color: #000;
+  padding: 30px;
+  font-size: 12pt;
+  user-select: none;
+  -moz-user-select: none; -webkit-user-select: none;
+  -o-user-select: none; -ms-user-select: none;
+}
+
+a, input, button { outline: none; }
+input::-moz-focus-inner, button::-moz-focus-inner { border: 0; }
+
+#jsbox {
+  white-space: nowrap;
+}
+
+
+h1 {
+  font-size: 130%;
+  font-weight: normal;
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 2px rgba(0,0,0,0.4);
+}
+
+.container {
+  margin-top: 20px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.container_title {
+  font-size: 120%;
+  margin-bottom: 0px;
+  cursor: default;
+}
+
+/* Menu =================================================== */
+#menu_button {
+  box-sizing: border-box;
+  background: #aac; color: #005;
+  border: 1px solid #66f;
+  text-align: center;
+  width: 200px;
+  padding: 6px 0;
+  vertical-align: middle;
+  margin-left: 0px;
+}
+#menu_button:hover {
+  background: #bbf;
+}
+
+#menu_container {
+  position: fixed;
+  left: 300px; top: 10px;
+  display: none;
+  font-size: 100%;
+  border: 1px solid #aaa;
+  background: rgba(255,255,255,0.7);
+  /* opacity: 0.7; */
+  box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+}
+
+#menu_normal, #menu_canvas {
+  padding: 6px;
+}
+
+#menu_normal {
+  border-bottom: 1px solid #aaa;
+}
+
+.menu_head {
+}
+
+.menu_item {
+  margin-top: 10px;
+  font-size: 90%;
+}
+
+#position_ckbox {
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+
+/* Color ================================================== */
+#color {
+  /* border: 1px solid #aaa; */
+}
+#colorout {
+  margin-left: 10px;
+}
+
+/* Position ================================================== */
+#position {
+  display: none;
+  position: absolute;
+  left: 0; top: 0;
+  color: #000;
+  background: rgba(150, 150, 255, 0.4);
+  padding: 4px;
+  cursor: default;
+}
+
+#pdot {
+  display: none;
+  position: absolute;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.6);
+}
+
+/* Output =================================================  */
+#output_container {
+  margin-left: 20px;
+}
+
+#output {
+  box-sizing: border-box;
+  background: #fff; color: inherit;
+  width: 400px; height: 500px;
+  font-size: inherit;
+  padding: 4px;
+  border: 1px solid #888;
+  margin-top: 10px;
+  box-shadow: 0 0 2px 0px rgba(0,0,0,0.3) inset;
+  resize: none;
+}
+
+/* Submit =====================================================  */
+
+#submit_button {
+  box-sizing: border-box;
+  background: #fdd; color: #500;
+  border: 1px solid #f66;
+  text-align: center;
+  width: 200px;
+  padding: 6px 0;
+  vertical-align: middle;
+  margin-left: 0px;
+}
+#submit_button:hover {
+  background: #fbb;
+}
+
+/* Field =======================================================  */
+#field {
+  display: none;
+  border: 1px solid #888;
+  background: #fff; color: inherit;
+  margin-top: 10px;
+}
+
+/* Source ====================================================== */
+#source_container {
+}
+#mainfunc {
+  box-sizing: border-box;
+  background: #fff; color: inherit;
+  width: 500px; height: 500px;
+  font-size: 100%;
+  padding: 4px;
+  border: 1px solid #888;
+  margin-top: 10px;
+  box-shadow: 0 0 2px 0px rgba(0,0,0,0.3) inset;
+  /* resize: none; */
+}
+
+
+/* Save / Load =============================================== */
+#save_button, #load_button {
+  display: inline-block;
+  text-decoration: none;
+  box-sizing: border-box;
+  background: #dfd; color: #050;
+  border: 1px solid #6f6;
+  text-align: center;
+  width: 120px;
+  padding: 6px 0;
+  vertical-align: middle;
+  margin-left: 12px;
+  /* font-size: 90%; */
+}
+#save_button:hover, #load_button:hover {
+  background: #bfb;
+}
+
+#save_button {
+}
+
+#load_button {
+  margin-left: 40px;
+}
+#load_input {
+  display: none;
+}
+
+#filename {
+  margin-left: 30px;
+  font-size: 80%;
+  font-family: monospace;
+}
+
+/* Misc =======================================================  */
+
+button {
+  font-size: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.monospace {
+  font-family: monospace;
+}
+
+.selectable {
+  user-select: text;
+  -moz-user-select: text; -webkit-user-select: text;
+  -o-user-select: text; -ms-user-select: text;
+}
