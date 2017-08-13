@@ -13,6 +13,9 @@
   <link rel="stylesheet" type="text/css" href="src/wmemo-master/wmemo.css">
   <link rel="stylesheet" href="src/base.css">
   <link rel="stylesheet" type="text/css" href="src/jquery/jquery-ui-1.10.4.min.css">
+  <!-- <link rel="stylesheet" href="src/prettify/github-v2.min.css"> -->
+  <link rel="stylesheet" href="src/prettify/prettify.css">
+  <script src="src/prettify/prettify.js"></script>
   <script src="src/jquery/jquery-1.12.4.min.js"></script>
   <script type="text/javascript" src="src/jquery/jquery-ui-1.10.4.min.js"></script>
   <script type="text/javascript" src="src/wmemo-master/wmemo.js"></script>
@@ -22,68 +25,81 @@
 </head>
 <body>
 
-  <h1 id="wmemo_gen_button">プログラミング (JavaScript)</h1>
-  <div id="wmemo_field"></div>
+  <div id="JSPad">
+    <h1 id="wmemo_gen_button">プログラミング (JavaScript)</h1>
+    <div id="wmemo_field"></div>
 
-  <div id="menu_container">
-    <div id="menu_normal">
-      <div class="menu_head">一般</div>
-      <div class="menu_item">
-        テーマ <select id="theme"></select>
+    <div id="menu_container">
+      <div id="menu_normal">
+        <div class="menu_head">一般</div>
+        <div class="menu_item">
+          テーマ <select id="theme"></select>
+        </div>
+        <div class="menu_item">
+          フォントサイズ <select id="fontsize"></select>
+        </div>
+        <div class="menu_item">
+          サンプル <select id="sample"></select>
+        </div>
+        <div class="menu_item">
+          印刷設定
+          <select id="print_color">
+            <option value="bw">白黒 </option>
+            <option value="color">カラー</option>
+          </select>
+        </div>
       </div>
-      <div class="menu_item">
-        フォントサイズ <select id="fontsize"></select>
-      </div>
-      <div class="menu_item">
-        サンプル <select id="sample"></select>
+      <div id="menu_canvas">
+        <div class="menu_head">Canvas</div>
+        <div class="menu_item">
+          カラーピッカー <input type="color" id="color" value="#000000">
+          <span id="colorout" class="selectable"></span>
+        </div>
+        <div class="menu_item">
+          <label><input type="checkbox" id="position_ckbox">マウス座標表示</label>
+        </div>
       </div>
     </div>
-    <div id="menu_canvas">
-      <div class="menu_head">Canvas</div>
-      <div class="menu_item">
-        カラーピッカー <input type="color" id="color" value="#000000">
-        <span id="colorout" class="selectable"></span>
-      </div>
-      <div class="menu_item">
-        <label><input type="checkbox" id="position_ckbox">マウス座標表示</label>
-      </div>
+
+    <div>
+      <button type="button" id="menu_button" class="button">Menu (F8)</button>
+      <label id="load_button" class="button">
+        <input type="file" accept="application/javascript" id="load_input">読込
+      </label>
+      <a id="save_button" class="button">保存</a>
+      <button type="button" id="print_button" class="button">印刷</button>
     </div>
-  </div>
-
-  <div>
-    <button type="button" id="menu_button" class="button">Menu (F8)</button>
-    <label id="load_button" class="button">
-      <input type="file" accept="application/javascript" id="load_input">読込
-    </label>
-    <a id="save_button" class="button">保存</a>
-  </div>
-  <div id="submit_container" class="container">
-    <button type="button" id="submit_button" class="button">実行 (F9)</button>
-  </div>
-
-  <div id="jsbox">
-    <div id="source_container" class="container">
-      <div id="source_container_title" class="container_title">
-        ソースコード
-        <span id="filename"></span>
-      </div>
-      <textarea id="mainfunc" class="monospace"></textarea>
+    <div id="submit_container" class="container">
+      <button type="button" id="submit_button" class="button">実行 (F9)</button>
     </div>
 
-    <div id="output_container" class="container">
-      <div id="output_container_title" class="container_title">
-        出力
+    <div id="jsbox">
+      <div id="source_container" class="container">
+        <div id="source_container_title" class="container_title">
+          ソースコード
+          <span id="filename"></span>
+        </div>
+        <textarea id="mainfunc" class="monospace"></textarea>
       </div>
-      <div id="canvas_container"></div>
-      <div>
-        <textarea id="output" class="monospace" disabled="disabled"></textarea>
+
+      <div id="output_container" class="container">
+        <div id="output_container_title" class="container_title">
+          出力
+        </div>
+        <div id="canvas_container"></div>
+        <div>
+          <textarea id="output" class="monospace" disabled="disabled"></textarea>
+        </div>
       </div>
     </div>
+
+    <div id="position" data-freeze="0"></div>
+    <div id="pdot"></div>
   </div>
-
-
-  <div id="position" data-freeze="0"></div>
-  <div id="pdot"></div>
+  <div id="print_container">
+    <h1 id="print_title"></h1>
+    <div id="src"></div>
+  </div>
 
 </body>
 </html>

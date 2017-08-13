@@ -1,8 +1,8 @@
 // JSPad - Javascript学習環境
 /*
   Author: M. Bando <bando@ktc.ac.jp>
-  Version: 1.1
-  Last modified: Fri 11 Aug 2017 19:31:04 JST
+  Version: 1.2
+  Last modified: Mon 14 Aug 2017 07:34:15 JST
 
   The MIT License (MIT)
 
@@ -30,7 +30,7 @@
 var output, source, submit_button;
 var canvas, ctx, ptip, pdot;
 var ptip_freeze = false, menu_flag = false, position_flag = false;
-var file = false;
+var file = false, use_pretty = false;
 
 function init() {
   output = $("#output");
@@ -43,7 +43,6 @@ function init() {
   // filename
   setfilename(false);
   // save
-  function zpad(num) { return ("0" + num).slice(-2); }
   $('#save_button').on("click", function() {
     var d = new Date();
     $(this).attr("href", "data:application/octed-stream,"
@@ -67,12 +66,8 @@ function init() {
     };
     reader.readAsText(file);
   });
-  // load
-  // $('#load_button').on("click", function() {
-  //   var reader = new FileReader();
-  //   reader.readAsText(fname);
-  //   hoge.html(reader.result);
-  // });
+  // [Print] ==================================================
+  $('#print_button').on("click", prep_print);
 
   // [Menu] ==================================================
   // button
@@ -120,6 +115,11 @@ function init() {
     code = $(this).val();
     prep();
   });
+  // print-setting
+  $('#print_color').val(print_color).on("change", function() {
+    use_pretty = ($(this).val == "color");
+  });
+  use_pretty = (print_color == "color");
   // canvas ---------------------------------------------------
   // position
   $('#position_ckbox').prop('checked', false);
@@ -217,6 +217,29 @@ function prep(update) {
   //mainfunc();
 }
 
+function zpad(num) { return ("0" + num).slice(-2); }
+
+function prep_print() {
+  //$("html").css({"background": "#fff", "color": "#000"});
+  //$("#JSPad").css("display", "none");
+  //$("#print_container").css("display", "inline-block");
+  $("#src").html(
+    '<pre class="prettyprint linenums"><code class="lang-js"></code></pre>'
+  );
+  $("#src > pre > code").text(source.val());
+  if (use_pretty) { prettyPrint(); }
+  var d = new Date();
+  $("#print_title").text(
+    "JSPad / " + d.getFullYear() + '-' +  zpad(d.getMonth()+1)
+      + '-' + zpad(d.getDate()) + '-' + zpad(d.getHours()) + ':'
+      + zpad(d.getMinutes()) + ':' + zpad(d.getSeconds())
+  );
+  window.print();
+  //change_theme($('#theme').val());
+  //$("#JSPad").css("display", "block");
+  //$("#print_container").css("display", "none");
+}
+
 function setfilename(f) {
   $("#filename").html("(" + (f ? f : "") + ")");
 }
@@ -245,7 +268,7 @@ function change_theme(t) {
       "background": "#fff",
       "box-shadow": "0 0 2px 0px rgba(0,0,0,0.3) inset"
     });
-    $('h1').css("text-shadow", "2px 2px 2px rgba(0,0,0,0.4)");
+    $('#JSPad > h1').css("text-shadow", "2px 2px 2px rgba(0,0,0,0.4)");
     $('#menu_container').css({
       "background": "rgba(255,255,255,0.7)",
       "box-shadow": "2px 2px 2px rgba(0,0,0,0.3)"
@@ -261,7 +284,7 @@ function change_theme(t) {
       "background": "#111",
       "box-shadow": "0 0 5px 0px rgba(255,255,255,0.9) inset"
     });
-    $('h1').css("text-shadow", "0 0 8px rgba(250,250,250,0.8)");
+    $('#JSPad > h1').css("text-shadow", "0 0 8px rgba(250,250,250,0.8)");
     $('#menu_container').css({
       "background": "rgba(50,50,50,0.7)",
       "box-shadow": "2px 2px 2px rgba(255,255,255,0.3)"
@@ -277,7 +300,7 @@ function change_theme(t) {
       "background": "#111",
       "box-shadow": "0 0 5px 0px rgba(255,150,150,0.9) inset"
     });
-    $('h1').css("text-shadow", "0 0 8px rgba(250,150,150,0.8)");
+    $('#JSPad > h1').css("text-shadow", "0 0 8px rgba(250,150,150,0.8)");
     $('#menu_container').css({
       "background": "rgba(50,50,50,0.7)",
       "box-shadow": "2px 2px 2px rgba(255,150,150,0.3)"
@@ -293,7 +316,7 @@ function change_theme(t) {
       "background": "#111",
       "box-shadow": "0 0 5px 0px rgba(150,255,150,0.9) inset"
     });
-    $('h1').css("text-shadow", "0 0 8px rgba(0,250,0,0.8)");
+    $('#JSPad > h1').css("text-shadow", "0 0 8px rgba(0,250,0,0.8)");
     $('#menu_container').css({
       "background": "rgba(50,50,50,0.7)",
       "box-shadow": "2px 2px 2px rgba(150,255,150,0.3)"
@@ -309,7 +332,7 @@ function change_theme(t) {
       "background": "#111",
       "box-shadow": "0 0 5px 0px rgba(150,150,255,0.9) inset"
     });
-    $('h1').css("text-shadow", "0 0 8px rgba(200,200,250,0.8)");
+    $('#JSPad > h1').css("text-shadow", "0 0 8px rgba(200,200,250,0.8)");
     $('#menu_container').css({
       "background": "rgba(50,50,50,0.7)",
       "box-shadow": "2px 2px 2px rgba(150,150,255,0.3)"

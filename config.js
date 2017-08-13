@@ -11,3 +11,6 @@ var fontsize = 12;
 
 // メニューウィンドウのデフォルト表示 (true, false)
 var show_menu = false;
+
+// 印刷時の色設定 ("color" または "bw")
+var print_color = "color";

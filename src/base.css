@@ -7,7 +7,6 @@ html {
   font-family: sans-serif;
   background: #eee;
   color: #000;
-  padding: 30px;
   font-size: 12pt;
   user-select: none;
   -moz-user-select: none; -webkit-user-select: none;
@@ -16,6 +15,10 @@ html {
 
 a, input, button { outline: none; }
 input::-moz-focus-inner, button::-moz-focus-inner { border: 0; }
+
+#JSPad {
+  padding: 30px;
+}
 
 #jsbox {
   white-space: nowrap;
@@ -178,7 +181,7 @@ h1 {
   display: inline-block;
   text-decoration: none;
   box-sizing: border-box;
-  background: #dfd; color: #050;
+  background: #ada; color: #030;
   border: 1px solid #6f6;
   text-align: center;
   width: 120px;
@@ -207,7 +210,40 @@ h1 {
   font-family: monospace;
 }
 
-/* Misc =======================================================  */
+/* Print ===================================================== */
+#print_button {
+  display: inline-block;
+  text-decoration: none;
+  box-sizing: border-box;
+  background: #ada; color: #030;
+  border: 1px solid #6f6;
+  text-align: center;
+  width: 120px;
+  padding: 6px 0;
+  vertical-align: middle;
+  margin-left: 12px;
+  /* font-size: 90%; */
+}
+#print_button:hover {
+  background: #bfb;
+}
+
+#print_container {
+  display: none;
+  padding: 0.7in 0.5in 0.5in 0.6in;
+}
+#print_container pre {
+  /* border: 1px solid #000; */
+  margin-left: 20px;
+}
+
+#print_title {
+  margin: 0; padding: 0;
+  color: #000;
+  text-shadow: none;
+}
+
+/* Misc ======================================================= */
 
 button {
   font-size: inherit;
@@ -223,4 +259,22 @@ button {
   user-select: text;
   -moz-user-select: text; -webkit-user-select: text;
   -o-user-select: text; -ms-user-select: text;
+}
+
+@media print {
+  html {
+    background: #fff;
+    color: #000;
+  }
+  #JSPad{
+    display: none;
+  }
+  #print_container{
+    display: inline-block;
+  }
+}
+
+@page {
+  size: A4;
+  margin: 0;
 }
