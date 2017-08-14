@@ -516,19 +516,6 @@ setLoop(function() {
           </dd>
 
         </dl>
-<pre><code>
-
-function image(imagefile, x, y, scale) {
-  var sc = (scale != undefined ? scale : 1.0);
-  var img = new Image();
-  img.src = imagefile;
-  img.onload = function() {
-    ctx.drawImage(img, x, y, ~~(sc*img.width), ~~(sc*img.height));
-  }
-}
-</code></pre>
-        <!-- -->
-
       </div>
     </div>
 
