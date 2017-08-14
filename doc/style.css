@@ -1,0 +1,92 @@
+ul, ol {
+  padding: 0;
+  margin: 6px 0 6px 30px;
+}
+li {
+  margin-top: 4px;
+}
+
+h3 {
+  margin: 1.5em 0 6px 0;
+  text-decoration: underline;
+}
+
+#menu ul, #menu ol {
+  margin: 0;
+}
+#menu li {
+  margin-top: 0;
+}
+
+dl {
+  margin-top: 0;
+}
+dt {
+  font-weight: bold;
+  margin-bottom: 4px;
+  margin-top: 14px;
+}
+dd {
+  margin-top: 4px;
+  margin-bottom: 10px;
+}
+
+table {
+  border-collapse: collapse;
+  margin: 10px;
+}
+td, th {
+  border: 2px solid #888;
+  padding: 3px 6px;
+}
+
+tr.center td, tr.center.th {
+  text-align: center;
+}
+
+pre {
+  border: 2px solid #888;
+  padding: 4px; margin: 10px;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.tt {
+  font-family: monospace;
+}
+
+.normal {
+  font-weight: normal;
+}
+
+.sl {
+  font-style: oblique;
+}
+
+.ttdl dt {
+  font-family: monospace;
+}
+
+@media print {
+  html, body, h1.title, #content, a, h2.sec, div.container, table {
+    background: #fff; color: #000;
+    border-color: #000;
+  }
+  #goto_top, #menu {
+    display: none;
+  }
+  #content {
+    padding: 0;
+  }
+  h1.title {
+    padding-top: 0;
+    height: auto;
+  }
+}
+
+@page {
+  size: A4;
+  margin: 1in;
+}

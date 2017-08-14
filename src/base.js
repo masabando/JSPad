@@ -1,8 +1,8 @@
 // JSPad - Javascript学習環境
 /*
   Author: M. Bando <bando@ktc.ac.jp>
-  Version: 1.2
-  Last modified: Mon 14 Aug 2017 07:34:15 JST
+  Version: 1.3
+  Last modified: Mon 14 Aug 2017 21:15:51 JST
 
   The MIT License (MIT)
 
@@ -120,6 +120,10 @@ function init() {
     use_pretty = ($(this).val == "color");
   });
   use_pretty = (print_color == "color");
+  // manual-open
+  $('#manual_button').off().on("click", function() {
+    window.open('doc/index.html', '_blank', 'width=600, height=500');
+  });
   // canvas ---------------------------------------------------
   // position
   $('#position_ckbox').prop('checked', false);
@@ -357,8 +361,8 @@ function toggle_menu(f) {
 
 // Functions ---------------------------------------------------------
 function sputs(str) { source.val("" + str); }
-function gets(str) { return prompt(str); }
-function getn(str) { return Number(prompt(str)); }
+function gets(str,pre) { return prompt(str,pre); }
+function getn(str,pre) { return Number(prompt(str,pre)); }
 function puts(str) { output.val(output.val() + str + "\n"); }
 
 var interval = false;
@@ -396,7 +400,7 @@ function rect(x, y, width, height, col, lw) {
     alert("rect の引数が間違っています。");
   } else {
     ctx.save();
-    ctx.strokeStyle = col;
+    ctx.strokeStyle = (col != undefined ? col : "#000");
     ctx.lineWidth = (lw != undefined ? lw : 2.0);
     ctx.strokeRect(~~(x - width/2), ~~(y - height/2), ~~width, ~~height);
     ctx.restore();
@@ -408,7 +412,7 @@ function fillRect(x, y, width, height, col) {
     alert("fillRect の引数が間違っています。");
   } else {
     ctx.save();
-    ctx.fillStyle = col;
+    ctx.fillStyle = (col != undefined ? col : "#000");
     ctx.beginPath();
     ctx.fillRect(~~(x - width/2), ~~(y - height/2), ~~width, ~~height);
     ctx.restore();
@@ -420,7 +424,7 @@ function fillCircle(x, y, r, col) {
     alert("fillCircle の引数が間違っています。");
   } else {
     ctx.save();
-    ctx.fillStyle = col;
+    ctx.fillStyle = (col != undefined ? col : "#000");
     ctx.beginPath();
     ctx.arc(~~x, ~~y, ~~r, 0, Math.PI*2, true);
     ctx.fill();
@@ -433,7 +437,7 @@ function circle(x, y, r, col, lw) {
     alert("circle の引数が間違っています。");
   } else {
     ctx.save();
-    ctx.strokeStyle = col;
+    ctx.strokeStyle = (col != undefined ? col : "#000");
     ctx.lineWidth = (lw != undefined ? lw : 2.0);
     ctx.beginPath();
     ctx.arc(~~x, ~~y, ~~r, 0, Math.PI*2, true);
@@ -448,7 +452,7 @@ function text(str, x, y, size, col, lw) {
   ctx.lineWidth = (lw != undefined ? lw : 1.0);
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
-  ctx.strokeStyle = col;
+  ctx.strokeStyle = (col != undefined ? col : "#000");
   ctx.strokeText(str, x, y);
   ctx.restore();
 }
@@ -458,14 +462,14 @@ function fillText(str, x, y, size, col) {
   ctx.font = "normal " + size + "pt sans-serif";
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
-  ctx.fillStyle = col;
+  ctx.fillStyle = (col != undefined ? col : "#000");
   ctx.fillText(str, x, y);
   ctx.restore();
 }
 
 function line(xy_a, col, lw) {
   ctx.save();
-  ctx.strokeStyle = col;
+  ctx.strokeStyle = (col != undefined ? col : "#000");
   ctx.lineWidth = (lw != undefined ? lw : 2.0);
   ctx.beginPath();
   ctx.moveTo(xy_a[0][0], xy_a[0][1]);
@@ -478,7 +482,7 @@ function line(xy_a, col, lw) {
 
 function cycle(xy_a, col, lw) {
   ctx.save();
-  ctx.strokeStyle = col;
+  ctx.strokeStyle = (col != undefined ? col : "#000");
   ctx.lineWidth = (lw != undefined ? lw : 2.0);
   ctx.beginPath();
   ctx.moveTo(xy_a[0][0], xy_a[0][1]);
@@ -492,7 +496,7 @@ function cycle(xy_a, col, lw) {
 
 function fillCycle(xy_a, col) {
   ctx.save();
-  ctx.fillStyle = col;
+  ctx.fillStyle = (col != undefined ? col : "#000");
   ctx.beginPath();
   ctx.moveTo(xy_a[0][0], xy_a[0][1]);
   for (var i = 0; i < xy_a.length; i++) {

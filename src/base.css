@@ -91,6 +91,12 @@ h1 {
   vertical-align: middle;
 }
 
+#manual_button {
+  padding-left: 20px;
+  padding-right: 20px;
+  color: #333;
+  font-size: 100%;
+}
 
 /* Color ================================================== */
 #color {

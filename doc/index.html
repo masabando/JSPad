@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JSPad マニュアル</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="src/ws03.css"/>
+  <link rel="stylesheet" href="style.css"/>
+  <script type="text/javascript" src="src/jquery/jquery-1.11.1.min.js"></script>
+  <script type="text/javascript" src="src/ws03.js"></script>
+</head>
+<body>
+
+  <h1 class="title">JSPad マニュアル</h1>
+  <div id="content">
+
+    <div class="container">
+      <h2 class="sec">JSPadとは</h2>
+      <div class="text">
+        JSPadは、プログラミング初学者がプログラミングの基礎を容易に学べることに重点を置いて作成されたWebページです。
+        手軽にプログラムを書いて試せる他、簡単な絵やアニメーションを作ることもできます。
+        C言語やJavaを学ぶ前のステップとして、またはJavaScriptの動作確認に利用されることを想定しています。
+        <br/><br/>
+        JSPadは今のところ、以下のブラウザで動作が確認されています。
+        <ul>
+          <li>(Linux) Firefox 51.0.1 (64ビット)</li>
+          <li>(Linux) Chromium 53.0 (64ビット)</li>
+        </ul>
+        <span class="underline">比較的新しいブラウザでなけば正しく動作しません。</span>
+          <!--
+          <a class="popup" href="https://www.google.co.jp/">リンクサンプル(Google)</a>
+          <span class="popup">ポップアップサンプル(fade)
+            <span class="popuptext">ポップアップテキスト</span>
+          </span>
+          <span class="popup">ポップアップサンプル(rolldown)
+            <span class="popuprolltext">ポップアップテキスト</span>
+          </span>
+          -->
+      </div>
+    </div>
+
+    <div class="container">
+      <h2 class="sec">ChangeLog</h2>
+      <div class="text">
+        <dl>
+          <dt>2017/08/14</dt>
+          <dd>
+            JSPad 1.3 リリース<br/>
+            マニュアルページの追加
+          </dd>
+        </dl>
+        </div>
+    </div>
+
+    <div class="container">
+      <h2 class="sec">使い始める</h2>
+      <div class="text">
+        次のページにアクセスします。<br/>
+        <a href="https://masabando.github.io/JSPad/">https://masabando.github.io/JSPad/</a><br/><br/>
+        ローカル (インターネットがない環境) で使用する場合は、あらかじめ以下からファイルをダウンロードしておき、解凍した中の <span class="tt">index.html</span> をブラウザで開きます。<br/>
+        <a href="https://github.com/masabando/JSPad/archive/master.zip">https://github.com/masabando/JSPad/archive/master.zip</a>
+      </div>
+    </div>
+
+    <div class="container">
+      <h2 class="sec">プログラムを書く</h2>
+      <div class="text">
+        ページ左側の「ソースコード」の部分にプログラムを書き、
+        「実行」ボタンをクリックする (またはF9キー) と、書いた内容が実行されます。
+        出力はページ右側に表示されます。<br/>
+        プログラムは、以下のような形で書きます。
+<pre><code>function() {
+  ここにプログラムを書く。
+}
+</code></pre>
+        <!-- -->
+        上の形以外のプログラムは正しく動きません。
+        <span class="tt">function(){ }</span> の外には、
+        <span class="tt">function(){ }</span> を含むあらゆるものを書くことができません。<br/>
+        <span class="tt">function(){ }</span> の中には、あらゆるJavaScriptのコードを書くことができます。
+
+        <h3>コメント</h3>
+        スラッシュ2つより右はコメントになります。
+<pre><code>// コメント
+</code></pre>
+        <!-- -->
+
+        <h3>出力</h3>
+        右側の出力部分に出力するには、JSPadの組み込み関数である
+        <span class="tt">puts()</span> 関数を使います。<br/>
+        <span class="tt">puts("文字列")</span> とすれば、文字列が出力されます。
+        出力の最後は自動的に改行されます。
+<pre><code>puts("foobar"); // foobarと出力
+</code></pre>
+        <!-- -->
+
+        <h3>変数の宣言</h3>
+        変数の宣言は
+<pre><code>var a;
+</code></pre>
+        <!-- -->
+        のようにします。
+        宣言は型(整数、実数、文字列、...)に依りません。<br/>
+        複数の変数を同時に宣言できます。
+<pre><code>var a, b, c, d;
+</code></pre>
+        <!-- -->
+        以下のように宣言と同時に初期化もできます。
+<pre><code>var a = 10;
+</code></pre>
+        <!-- -->
+        <h3>文字列</h3>
+        文字列はシングルクォートまたはダブルクォートで括ります。
+<pre><code>var s = "foobar";
+</code></pre>
+        <!-- -->
+        文字列の結合は + 演算子を使って、足し算のように行えます。<br/>
+        数値 + 文字列 をすると、数値が文字列に変換されて文字列と結合できます。
+<pre><code>var s = "foo", t = "bar";
+var a = 4;
+puts(s + a + t); // foo4barが出力される。
+</code></pre>
+        <!-- -->
+
+
+        <h3>入力</h3>
+        文字列の入力には、JSPadの組み込み関数である
+        <span class="tt">gets()</span> 関数を使います。
+        返り値は入力された文字列です。<br/>
+        <span class="tt">gets("文字列")</span>
+        とすれば、"文字列"というメッセージ付きでユーザの入力を促すポップアップが出ます。
+        引数を省略することもできます。
+<pre><code>var name = gets("名前を入力してください");
+puts("ようこそ、" + name + "さん。");
+</code></pre>
+        <!-- -->
+        数値の入力には、JSPadの組み込み関数である
+        <span class="tt">getn()</span> 関数を使います。
+        返り値は入力された数値です。<br/>
+        使い方は <span class="tt">gets()</span> と同様です。
+<pre><code>var a = getn("1つ目の数値を入力してください");
+var b = getn("2つ目の数値を入力してください");
+puts("2つの数値の和は" + (a + b) + "です。");
+</code></pre>
+        <!-- -->
+
+        <h3>分岐</h3>
+        分岐処理は <span class="tt">if</span>文を使用します。
+<pre><code>if (条件式) {
+  条件式が正しい時の処理;
+}
+</code></pre>
+<pre><code>if (条件式) {
+  条件式が正しい時の処理;
+} else {
+  条件式が正しくない時の処理;
+}
+</code></pre>
+        <!-- -->
+        条件式の部分には、以下のような条件式を使います。
+        <table class="tt">
+          <tr class="center">
+            <th>条件式</th>
+            <td>a == b</td>
+            <td>a != b</td>
+            <td>a &lt; b</td>
+            <td>a &gt; b</td>
+            <td>a &lt;= b</td>
+            <td>a &gt;= b</td>
+          </tr>
+          <tr>
+            <th>意味</th>
+            <td>等しい</td>
+            <td>等しくない</td>
+            <td>aはbより小さい</td>
+            <td>aはbより大きい</td>
+            <td>aはb以下</td>
+            <td>aはb以上</td>
+          </tr>
+        </table>
+        ユーザの入力と組み合わて使うことができます。
+<pre><code>var a = getn("数値を入力してください");
+if (a &gt; 10) {
+  puts("10より大きい"); // ユーザ入力が10より大きければ出力される。
+}
+</code></pre>
+<pre><code>var a = getn("数値を入力してください");
+if (a &gt; 10) {
+  puts("10より大きい"); // ユーザ入力が10より大きければ出力される。
+} else {
+  puts("10以下"); // そうでなければ出力される。
+}
+</code></pre>
+        <!-- -->
+        複数の条件のANDやORを指定することもできます。
+<pre><code>if (条件式1 && 条件式2) {
+  条件式1と条件式2が共に正しい時の処理;
+}
+
+if (条件式1 || 条件式2) {
+  条件式1と条件式2のどちらかが正しい時の処理;
+}
+</code></pre>
+        <!-- -->
+        空の文字列 <span class="tt">""</span> や、0 は false ですが、
+        0以外の数値や空でない文字列は true です。<br/>
+
+
+        <h3>繰り返し</h3>
+        繰り返し処理は <span class="tt">for</span> 文や
+        <span class="tt">while</span> 文を使用します。
+<pre><code>for (前処理; 条件式; 後処理) {
+  繰り返す処理;
+}
+
+while (条件式) {
+  繰り返す処理;
+}
+</code></pre>
+        <!-- -->
+        <span class="tt">for</span> 文では、
+        <ol>
+          <li>前処理を行う。</li>
+          <li>条件式を満たすなら次へ、そうでなければループを抜ける。</li>
+          <li>ブロック内の処理を行う。</li>
+          <li>後処理を行う。</li>
+          <li>2.に戻る。</li>
+        </ol>
+        の順で処理が行われます。
+<pre><code>// 1〜4までが順に出力される。
+for (var i = 1; i &lt; 5; i = i + 1) {
+  puts(i);
+}
+</code></pre>
+        <!-- -->
+        <span class="tt">while</span> 文では、条件式が正しい限り処理を繰り返します。
+<pre><code>// 1〜4までが順に出力される。
+var i = 1;
+while (i &lt; 5) {
+  puts(i);
+  i = i + 1;
+}
+</code></pre>
+        <!-- -->
+        <span class="tt">i = i + 1</span> のような文は省略して書くことができます。
+<pre><code>i++; // i = i + 1; と(ほぼ)同じ。
+i--; // i = i - 1; と(ほぼ)同じ。
+++i; // i = i + 1; と同じ。
+--i; // i = i - 1; と同じ。
+</code></pre>
+        <!-- -->
+      </div>
+    </div>
+
+
+    <div class="container">
+      <h2 class="sec">絵を描く</h2>
+      <div class="text">
+        <span class="tt">draw()</span>
+        関数を使うことで、絵を描くことができます。<br/>
+        通常の出力の表示箇所が消え、代わりにキャンバスが表示されます。
+<pre><code>draw(300, 400); // 幅300px、高さ400pxのキャンバスを作成する。
+</code></pre>
+        <!-- -->
+        座標の基準点 (0,0) はキャンバスの左上で、x座標は右、y座標は下が正の方向です。<br/>
+        作成した絵は右クリックから「名前を付けて画像を保存」で保存できます。<br/>
+        詳細はサンプルや下記「組み込み関数」を参照して下さい。<br/>
+
+        <h3>アニメーション</h3>
+        ウェイト付きの繰り返しを行うことで、アニメーションを作成できます。<br/>
+<pre><code>draw(300, 400);
+setLoop(function() {
+  処理;
+}, 100); // 100ms(0.1秒)で処理を繰り返す
+</code></pre>
+        <!-- -->
+        なお、
+        <span class="tt">draw()</span>より後で<span class="tt">output.show()</span>
+        を呼ぶことで、通常の出力の表示箇所も同時に表示できます。
+      </div>
+    </div>
+
+
+    <div class="container">
+      <h2 class="sec">設定ウィンドウ</h2>
+      <div class="text">
+        ローカルのファイルを読込むことができます。<br/>
+        「読込」ボタンを押すとダイアログが出るので、開きたいJavaScriptのファイルを選択して下さい。<br/><br/>
+        ローカルにファイルを保存することもできます。<br/>
+        保存ボタンを押すとその時点でのプログラムがファイルとしてダウンロードできます。
+      </div>
+    </div>
+
+
+    <div class="container">
+      <h2 class="sec">読込 / 保存</h2>
+      <div class="text">
+        ローカルのファイルを読込むことができます。<br/>
+        「読込」ボタンを押すとダイアログが出るので、開きたいJavaScriptのファイルを選択して下さい。<br/><br/>
+        ローカルにファイルを保存することもできます。<br/>
+        保存ボタンを押すとその時点でのプログラムがファイルとしてダウンロードできます。
+      </div>
+    </div>
+
+    <div class="container">
+      <h2 class="sec">印刷</h2>
+      <div class="text">
+        「印刷」ボタンを押すと、印刷ダイアログが出ます。<br/>
+        画面全体ではなく、コード部分のみが印刷されます。
+        シンタックスハイライトの可否はメニューの「印刷設定」で選択します。<br/>
+        <span class="underline">
+          ブラウザのメニューからは正しく印刷できません。
+        </span>
+      </div>
+    </div>
+
+    <div class="container">
+      <h2 class="sec">設定</h2>
+      <div class="text">
+        「Menu」ボタンをクリックするか、F8キーで設定ウィンドウの表示を切り替えることができます。<br/>
+        テーマ、フォントサイズ、ロードするサンプルファイル、印刷の設定、カラーピッカー、マウス座標表示の可否、を設定できます。
+        ローカルで使用する場合、<span class="tt">config.js</span>
+        を書き換えることで、デフォルトの設定を指定することができます。
+      </div>
+    </div>
+
+    <div class="container">
+      <h2 class="sec">カラーピッカー</h2>
+      <div class="text">
+        キャンバスにおける色の指定は6桁、3桁、または8桁の16進数などで行います。<br/>
+        6桁の16進数で表す場合、<span class="tt">"#RRGGBB"</span> のように指定します。
+        ここで <span class="tt">R</span> は赤、
+        <span class="tt">G</span> は緑、 <span class="tt">B</span> は青を表します。
+        赤緑青の3色の量を <span class="tt">"00"</span>(最小)
+        〜 <span class="tt">"FF"</span>(最大) までで指定します。
+        加法混色なので、<span class="tt">"#000000"</span> は黒となり、
+        <span class="tt">"#FFFFFF"</span> は白となります。<br/>
+        3桁の場合は <span class="tt">"#RGB"</span>、
+        8桁の場合は <span class="tt">"#RRGGBBAA"</span> となり、
+        <span class="tt">A</span> は不透明度です。<br/>
+        色指定を容易にするため、メニューウィンドウの中にカラーピッカーがあります。
+      </div>
+    </div>
+
+
+    <div class="container">
+      <h2 class="sec">組み込み関数</h2>
+      <div class="text">
+        <h3>表記について</h3>
+        このマニュアルでは、各関数は以下のようなフォーマットで表記されています。
+<pre><code><dl class="ttdl"><dt>foo<span class="normal">(<span class="sl">arg1, arg2</span>) -&gt; TYPE</span></dt><dd>説明</dd></dt></code></pre>
+        <!-- -->
+        エントリの後に引数などの仕様が示されます。
+        これらの中には次のような表記が現れることがあります。
+        <table>
+          <tr><td class="tt">arg, …</td>
+            <td>0個以上の可変個の引数</td>
+          </tr>
+          <tr><td class="tt">arg=default</td>
+            <td>省略可能な引数の表記。省略された場合の既定値も示しています。</td>
+          </tr>
+          <tr><td class="tt">-&gt; TYPE</td>
+            <td>戻り値の型。指定がなければ undefined。</td>
+          </tr>
+        </table>
+        戻り値の型には以下のものがあります。
+        <table>
+          <tr><td class="tt">Number</td>
+            <td>数値 (整数または小数)</td>
+          </tr>
+          <tr><td class="tt">String</td>
+            <td>文字列</td>
+          </tr>
+        </table>
+
+        <h3>組み込み関数</h3>
+        <dl class="ttdl">
+          <dt>puts<span class="normal">(<span class="sl">msg</span>)</span></dt>
+          <dd>
+            msgを出力領域に表示し、改行します。<br/>
+            msgが文字列でなければ、文字列に変換します。
+          </dd>
+
+          <dt>gets<span class="normal">(<span class="sl">msg=undefined, pre=undefined</span>) -> String </span></dt>
+          <dd>
+            ポップアップによりユーザからの入力を文字列として受け取り、文字列のまま返します。<br/>
+            msgはポップアップに表示させる文字列であり、undefinedなら表示しません。<br/>
+            preはユーザ入力文字列の初期値であり、undefinedなら初期値を表示しません。
+          </dd>
+
+          <dt>getn<span class="normal">(<span class="sl">msg=undefined, pre=undefined</span>) -> Num </span></dt>
+          <dd>
+            ポップアップによりユーザからの入力を文字列として受け取り、数値に変換して返します。<br/>
+            msgはポップアップに表示させる文字列であり、undefinedなら表示しません。<br/>
+            preはユーザ入力数値の初期値であり、undefinedなら初期値を表示しません。
+          </dd>
+
+          <dt>draw<span class="normal">(<span class="sl">width=undefined, height=undefined</span>)</span></dt>
+          <dd>
+            キャンバスを使用する準備を行います。<br/>
+            widthとheightはそれぞれキャンバスの幅と高さです。<br/>
+            width または height のいずれかが0より大きい整数でなければ、
+            キャンバスのサイズは自動的に幅300、高さ300になります。<br/>
+            通常の出力先が非表示になりますが、
+            <span class="tt">output.show();</span>
+            をこの関数の後に呼ぶことで表示させることができます。
+          </dd>
+
+          <dt>clear<span class="normal">()</span></dt>
+          <dd>
+            キャンバスの内容をクリアします。
+          </dd>
+
+          <dt>translate<span class="normal">(<span class="sl">x, y</span>)</span></dt>
+          <dd>
+            キャンバスの原点を
+            <span class="tt">(x, y)</span> に移動します。
+          </dd>
+
+          <dt>rect<span class="normal">(<span class="sl">x, y, width, height, col="#000", lw=2.0</span>)</span></dt>
+          <dd>
+            キャンバスの座標 <span class="tt">(x, y)</span>
+            を中心とした、幅 <span class="tt">width</span>
+            で高さ <span class="tt">height</span> の四角を描きます。<br/>
+            <span class="tt">col</span> は線の色、<span class="tt">lw</span> は線の太さです。
+          </dd>
+
+          <dt>fillRect<span class="normal">(<span class="sl">x, y, width, height, col="#000"</span>)</span></dt>
+          <dd>
+            を中心とした、幅 <span class="tt">width</span>
+            で高さ <span class="tt">height</span> の四角を塗り潰します。<br/>
+            <span class="tt">col</span> は塗り潰しの色です。
+          </dd>
+
+          <dt>circle<span class="normal">(<span class="sl">x, y, r, col="#000", lw=2</span>)</span></dt>
+          <dd>
+            キャンバスの座標 <span class="tt">(x, y)</span>
+            を中心とした、半径 <span class="tt">r</span>
+            の円を描きます。<br/>
+            <span class="tt">col</span> は線の色、<span class="tt">lw</span> は線の太さです。
+          </dd>
+
+          <dt>fillCircle<span class="normal">(<span class="sl">x, y, r, col="#000"</span>)</span></dt>
+          <dd>
+            キャンバスの座標 <span class="tt">(x, y)</span>
+            を中心とした、半径 <span class="tt">r</span>
+            の円を塗り潰します。<br/>
+            <span class="tt">col</span> は塗り潰しの色です。
+          </dd>
+
+          <dt>text<span class="normal">(<span class="sl">str, x, y, size, col="#000", lw=1.0</span>)</span></dt>
+          <dd>
+            キャンバスの座標 <span class="tt">(x, y)</span>
+            を中心として、文字列 <span class="tt">str</span>
+            を縁取ります。<br/>
+            <span class="tt">size</span> は文字のサイズ、
+            <span class="tt">col</span> は文字の色、
+            <span class="tt">lw</span> は線の太さです。
+          </dd>
+
+          <dt>fillText<span class="normal">(<span class="sl">str, x, y, size, col="#000"</span>)</span></dt>
+          <dd>
+            キャンバスの座標 <span class="tt">(x, y)</span>
+            を中心として、文字列 <span class="tt">str</span>
+            の形に塗り潰します。<br/>
+            <span class="tt">size</span> は文字のサイズ、
+            <span class="tt">col</span> は文字の色です。
+          </dd>
+
+          <dt>line<span class="normal">(<span class="sl">xy_a, col="#000", lw=2.0</span>)</span></dt>
+          <dd>
+            指定された座標列 <span class="tt"> xy_a = [[x1, y1], [x2, y2], ...]</span>
+            の点を順に結ぶように折れ線を引きます。<br/>
+            <span class="tt">col</span> は文字の色、
+            <span class="tt">lw</span> は線の太さです。
+          </dd>
+
+          <dt>cycle<span class="normal">(<span class="sl">xy_a, col="#000", lw=2.0</span>)</span></dt>
+          <dd>
+            指定された座標列 <span class="tt"> xy_a = [[x1, y1], [x2, y2], ...]</span>
+            の点を順に周期的に結ぶ図形を描きます。<br/>
+            <span class="tt">line()</span> との違い、最後に必ず最初の点に戻るため、閉じた領域ができます。<br/>
+            <span class="tt">col</span> は文字の色、
+            <span class="tt">lw</span> は線の太さです。
+          </dd>
+
+          <dt>fillCycle<span class="normal">(<span class="sl">xy_a, col="#000"</span>)</span></dt>
+          <dd>
+            指定された座標列 <span class="tt"> xy_a = [[x1, y1], [x2, y2], ...]</span>
+            の点を順に周期的に結ぶ図形を塗り潰します。<br/>
+            <span class="tt">col</span> は文字の色です。
+          </dd>
+
+          <dt>image<span class="normal">(<span class="sl">imagefile, x, y, scale=1.0</span>)</span></dt>
+          <dd>
+            点 <span class="tt">(x, y)</span> を左上として、画像
+            <span class="tt">imagefile</span> を表示します。<br/>
+            <span class="tt">imagefile</span> は
+            JSPad本体<span class="tt">(index.html)</span>
+            からの相対パス、またはURLで指定します。<br/>
+            <span class="tt">scale</span> は画像のスケールです。
+          </dd>
+
+          <dt>setLoop<span class="normal">(<span class="sl">proc, wait</span>)</span></dt>
+          <dd>
+            関数 <span class="tt">proc</span> を、整数 waitで指定するミリ秒間隔で繰り返し実行します。<br/>
+            関数 <span class="tt">proc</span> は
+            <span class="tt">function() { ... }</span>
+            のように無名関数を指定することもできます。
+          </dd>
+
+          <dt>clearLoop<span class="normal">()</span></dt>
+          <dd>
+            <span class="tt">setLoop()</span> で指定した繰り返しを解除します。
+          </dd>
+
+        </dl>
+<pre><code>
+
+function image(imagefile, x, y, scale) {
+  var sc = (scale != undefined ? scale : 1.0);
+  var img = new Image();
+  img.src = imagefile;
+  img.onload = function() {
+    ctx.drawImage(img, x, y, ~~(sc*img.width), ~~(sc*img.height));
+  }
+}
+</code></pre>
+        <!-- -->
+
+      </div>
+    </div>
+
+
+    <div class="container">
+      <h2 class="sec">サンプルの追加</h2>
+      <div class="text">
+        ローカルで使用する場合は、<span class="tt">src/sample.js</span>
+        に無名関数を追加して下さい。<br/>
+        <span class="tt">src/sample.js</span>
+        の中の構造は以下の通りです。
+        キーを追加/削除しない限り、自動的にサンプルがリストに反映されます。
+<pre><code>sample = {
+  blank: [サンプル関数],
+  normal: {
+    basic: [サンプル関数, ...],
+    advanced: [サンプル関数, ...]
+  },
+  canvas: {
+    basic: [サンプル関数, ...],
+    advanced: [サンプル関数, ...],
+    anime: [サンプル関数, ...],
+    misc: [サンプル関数, ...]
+  }
+}
+</code></pre>
+        Web上で使用する場合は、GitHubのリポジトリ(
+        <a href="https://github.com/masabando/JSPad">https://github.com/masabando/JSPad</a> )
+        にpullリクエストを送るか、作者まで連絡をどうぞ。
+      </div>
+    </div>
+
+  </div>
+
+  <div id="postamble">
+    ws03 - sample website 03
+  </div>
+</body>
+</html>
