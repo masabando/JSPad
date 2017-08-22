@@ -1,7 +1,7 @@
 // JSPad サンプルプログラム
 /*
   Author: M. Bando <bando@ktc.ac.jp>
-  Last modified: Fri 11 Aug 2017 04:36:18 JST
+  Last modified: Tue 22 Aug 2017 14:04:41 JST
 */
 
 var sample = {
@@ -170,7 +170,7 @@ function() {
   draw(300, 300);
   fillCircle(150, 150, 100, "#6666ff");
   for (var r = 101;r -= 2;) {
-    circle(150, 150, r, "rgba(0,0,0," + (r/1400) + ")");
+    circle(150, 150, r, "rgba(0,0,0," + (r/140) + ")", 2);
   }
 }
     ],

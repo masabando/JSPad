@@ -1,0 +1,15 @@
+* install nodejs & npm
+: sudo apt-get install nodejs
+: sudo apt-get install npm
+: sudo update-alternatives --install /usr/bin/node node /usr/bin/nodejs 10
+
+* install sass
+: sudo apt-get install ruby-sass
+
+* install babel-cli & preset
+: npm install -D babel-cli
+: npm install -D babel-preset-es2015
+: echo '{ "presets": ["es2015"] }' > .babelrc
+
+* babel
+: node_modules/babel-cli/bin/babel.js src/base.js -o base_es2015.js
