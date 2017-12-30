@@ -1,7 +1,7 @@
 /*
   JSPad - Javascript学習環境
   Author: M. Bando <bando@ktc.ac.jp>
-  Last modified: Tue 22 Aug 2017 13:27:12 JST
+  Last modified: Sat 30 Dec 2017 20:59:34 JST
 */
 
 var output, source, submit_button;
@@ -22,13 +22,26 @@ function init() {
   // save
   $('#save_button').on("click", function() {
     var d = new Date();
-    $(this).attr("href", "data:application/octed-stream,"
-                 + encodeURIComponent(source.val().replace(/\n/g, "\r\n")))
-      .attr("download",
-            "jsp" + d.getFullYear() + zpad(d.getMonth()+1)
-            + zpad(d.getDate()) + zpad(d.getHours())
-            + zpad(d.getMinutes()) + zpad(d.getSeconds())
-            + ".js");
+    var fname = "jsp" + d.getFullYear() + zpad(d.getMonth()+1)
+      + zpad(d.getDate()) + zpad(d.getHours())
+      + zpad(d.getMinutes()) + zpad(d.getSeconds())
+      + ".js";
+    var agent = navigator.userAgent.toLowerCase();
+
+    if (agent.indexOf('edge')   == -1 &&
+        (agent.indexOf('chrome') != -1 ||
+         agent.indexOf('firefox') != -1 ||
+         agent.indexOf('safari') != -1 ||
+         agent.indexOf('opera')  != -1)) {
+      $(this).attr("href", "data:application/octed-stream,"
+                   + encodeURIComponent(source.val().replace(/\n/g, "\r\n")))
+        .attr("download", fname);
+    } else {
+      var content = source.val().replace(/\n/g, "\r\n");
+      var blob = new Blob([ content ], { "type" : "text/plain" });
+
+      window.navigator.msSaveBlob(blob, fname);
+    }
   });
   // load
   $('#load_button').on("change", function(e) {
@@ -62,7 +75,7 @@ function init() {
   });
   // fontsize
   $('#fontsize').html(
-    Array.from(new Array(13)).map(function(v,i) {
+    Array.apply(null, new Array(13)).map(function(v,i) {
       return '<option value="' + (i+8) + '">' + (i+8) + 'pt</option>';
     }).join("")
   ).val("" + fontsize).on("change", function() {
