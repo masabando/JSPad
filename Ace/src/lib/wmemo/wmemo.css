@@ -1,0 +1,75 @@
+/* wmemo.css - v1.1
+   Last modified: Tue 27 May 2014 03:15:16 JST
+*/
+
+#wmemo_gen_button {  }
+#wmemo_field { margin: 0; padding: 0; }
+
+/* memo */
+#wmemo_field div.wmemo {
+  display: block;
+  top: 90px; left: 60px; position: fixed!important;
+  margin: 0; padding: 0;
+  border: solid 1px #000; border-radius: 6px;
+  background-color: #777;
+  box-shadow: 1px 1px 4px #777;
+  opacity: 0.8;
+}
+#wmemo_field div.wmemo textarea {
+  background-color: #fff; color: #000;
+  border-top: solid 1px #aaa; border-left: solid 1px #aaa;
+  border-bottom: solid 1px #aaa; border-right: solid 1px #aaa;
+  margin: 2px 5px 5px 5px; padding: 0px;
+  resize: none;
+  font-size: 12pt;
+}
+
+#wmemo_field div.colbutton {
+  display: inline-block; float: left; width: 10px; height: 10px;
+  padding: 0; margin: 5px 2px 0px 2px; border: solid 1px #000;
+  cursor: pointer; border-radius: 50%;
+  box-shadow: -1px -1px 1px #555 inset;
+}
+#wmemo_field div.colbutton.col0 { margin-left: 10px; }
+
+#wmemo_field div.bgcolbutton {
+  display: inline-block; float: left; width: 0px; height: 0px;
+  border-top: solid 6px #fff; border-left: solid 6px #fff;
+  border-bottom: solid 6px #000; border-right: solid 6px #000;
+  padding: 0; margin: 5px 2px 0px 2px;
+  cursor: pointer;
+}
+
+#wmemo_field div.fbutton {
+  display: inline-block; float: left; width: 0px; height: 0px;
+  padding: 0; margin: 5px 2px 0px 4px;
+  cursor: pointer;  opacity: 1;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+#wmemo_field div.fbutton.inc {
+  border-top: solid 0px transparent; border-left: solid 6px transparent;
+  border-bottom: solid 12px #000; border-right: solid 6px transparent;
+}
+#wmemo_field div.fbutton.dec {
+  border-top: solid 12px #000; border-left: solid 6px transparent;
+  border-bottom: solid 0px transparent; border-right: solid 6px transparent;
+}
+
+#wmemo_field div.sbutton {
+  display: inline-block; float: right; width: 11px; height: 11px;
+  border-radius: 50%;
+  padding: 0; margin: 5px 2px 0px 2px;
+  border: solid 1px #000;
+  cursor: pointer;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+#wmemo_field div.sbutton.close {
+  margin-right: 6px; text-align: center; opacity: 1;
+  font-size: 9pt; padding: 0;
+  line-height: 0.6;
+  background-color: #000; color: #eee;
+}

@@ -1,0 +1,190 @@
+/* CSS for ws03 */
+/*
+  Version: 1.2
+  Hue: 230
+*/
+
+html, body, div, p, span, h1, h2, ul, li, dl, dt, dd { margin: 0; padding: 0; }
+
+body {
+  font-family: 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', "メイリオ", Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', 'IPAPGothic', Helvetica, sans-serif;
+  font-size: 10.5pt; color: #251005;
+  background: #777;
+}
+
+h1.title {
+  height: 3em; background: #333;
+  color: #E0E5FF; font-size: 240%; font-weight: bold;
+  text-align: center;
+  text-shadow: 1px 1px 1px #B4BAD4;
+  box-sizing: border-box; padding-top: 0.9em;
+}
+
+/* Menu */
+#menu {
+  display: block;
+  background: rgba(0,0,0,0.5);
+  box-sizing: border-box;
+  width: 2.5em; height: 2.5em;
+  position: fixed; top: 9em; left: 1em;
+  padding-left: 0; padding-top: 2.5em;
+  transition: width 200ms ease-out 200ms;
+}
+#menu:hover {
+  background: rgba(0,0,0,0.4);
+  width: 10em;
+  transition: width 200ms ease-out;
+}
+
+#menu ul {
+  box-sizing: border-box;
+  opacity: 0.0;
+  transition: opacity 200ms ease-out;
+}
+#menu:hover ul {
+  opacity: 1.0;
+  transition: opacity 200ms ease-out 200ms;
+}
+
+#menu ul li {
+  box-sizing: border-box;
+  display: none;
+  list-style: none;
+  background: rgba(0,0,0,0.4);
+  margin-bottom: 0;
+  padding: 0.6em 0.2em;
+  font-size: 100%; text-decoration: none; text-align: center;
+  color: #f0f0f0;
+  text-shadow: 1px 1px 1px rgba(68,39,25,0.4);
+}
+#menu:hover ul li {
+  display: block;
+}
+#menu:hover ul li:hover {
+  color: #BDC8FF;
+  background: rgba(0,0,0, 0.7);
+}
+
+#content {
+  box-sizing: border-box;
+  padding: 1em 2em 2em 12em;
+}
+
+div.container {
+  display: none;
+  color: #f0f0f0;
+  background: rgba(0,0,0,0.7);
+  margin: 0.9em 0 2em 0; padding: 0.8em 0.5em 0.5em 0.5em;
+  /* box-shadow: 1px 1px 2px rgba(0,0,0, 0.8); */
+}
+
+h2.sec {
+  color: #BDC8FF; font-size: 120%; font-weight: bold;
+  border-bottom: 1px solid #6E7DCB;
+  padding: 0 0 0.2em 0.4em;
+}
+
+div.text {
+  font-size: 100%;
+  padding: 0.8em 0.2em 0.2em 0.4em;
+  line-height: 1.3;
+}
+
+/* Link */
+a { color: #9CABF4; }
+a:hover { background: rgba(255,255,255,0.2); }
+
+#postamble {
+  display: none;
+  background: #333;
+  font-size: 80%; color: #ddd;
+  padding: 0.5em 0 1em 4em;
+}
+
+/* Top button */
+#goto_top {
+  position: fixed; bottom: 2em; right: 2em;
+  display: inline-block; width: 5em; height: 2.6em;
+  color: #fff; background: #000;
+  font-size: 90%; text-align: center;
+  box-sizing: border-box; padding-top: 8px;
+  opacity: 0.5;
+  z-index: 2;
+}
+#goto_top:hover { opacity: 0.8; }
+
+.button {
+  user-select: none; -moz-user-select: none; -webkit-user-select: none;
+  -ms-user-select: none; -o-user-select: none;
+  cursor: pointer;
+}
+
+dl {
+  margin: 0.8em;
+}
+dt {
+  font-size: 110%;
+  margin: 0;
+}
+dd {
+  margin: 0.2em 0 1em 1.6em;
+}
+dt dd:nth-last-of-type(1) {
+  margin-bottom: 0.5em;
+}
+
+
+/* ==================== POPUP ==================== */
+@keyframes popuptext {
+  0% { display: none; opacity: 0; }
+  1% { display: block; opacity: 0; }
+  100% { display: block; opacity: 1; }
+}
+@keyframes popuprolltext {
+  0% { display: none; max-height: 0; }
+  1% { display: block; max-height: 0; }
+  100% { display: block; max-height: 500px; }
+}
+/* base */
+.popup {
+  display: inline-block; border-bottom: 1px dotted #666;
+  margin-bottom: -1px;
+}
+a.popup {/* link */
+  border: none; margin-bottom: 0;
+}
+/* popup block */
+.popup > .popuptext, .popup > .popuprolltext, a.popup:after {
+  display: none; z-index: 10;
+  position: absolute; margin: 2px 0 0 6px;
+  font-size: 90%;
+  min-width: 100px; max-width: 200px;
+  padding: 4px 8px;
+  box-shadow: 1px 1px 2px 0 rgba(0,0,0,0.5);
+}
+.popup > .popuptext {/* mouseout */
+  opacity: 0;
+  color: #eee; background-color: rgba(0,0,0,0.85);
+}
+.popup:hover > .popuptext {/* hover */
+  opacity: 1; display: block;
+  animation: popuptext 600ms ease;
+}
+.popup > .popuprolltext {/* mouseout (rolldown) */
+  overflow: hidden;
+  color: #eee; background-color: rgba(0,0,0,0.85);
+}
+.popup:hover > .popuprolltext {/* hover (rolldown) */
+  display: block;
+  animation: popuprolltext 600ms ease-out;
+}
+a.popup:after {/* mouseout (link) */
+  content: attr(href);
+  opacity: 0;
+  color: #000; background-color: rgba(193,200,233,0.85);
+  max-width: 400px;
+}
+a.popup:hover:after {/* hover (link) */
+  display: block; opacity: 1;
+  animation: popuptext 600ms ease;
+}
