@@ -1,7 +1,7 @@
 /*
   JSPad - Javascript学習環境
   Author: M. Bando <bando@ktc.ac.jp>
-  Last modified: Fri 26 Oct 2018 17:09:16 JST
+  Last modified: Tue 30 Oct 2018 12:34:47 JST
 */
 
 var output, source, submit_button;
