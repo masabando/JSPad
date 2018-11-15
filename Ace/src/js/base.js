@@ -1,7 +1,7 @@
 /*
   JSPad - Javascript学習環境
   Author: M. Bando <bando@ktc.ac.jp>
-  Last modified: Thu 15 Nov 2018 19:01:02 JST
+  Last modified: Thu 15 Nov 2018 19:08:46 JST
 */
 
 var output, source, submit_button;
@@ -384,7 +384,7 @@ function sputs(str) {
 function gets(str,pre) { return prompt(str,pre); }
 function getn(str,pre) { return Number(prompt(str,pre)); }
 function puts(str) { output.val(output.val() + str + "\n"); }
-function print(str) { output.val(output.val() + str); }
+function prints(str) { output.val(output.val() + str); }
 function floor(num) { return Math.floor(num); }
 function ceil(num) { return Math.ceil(num); }
 function round(num) { return Math.round(num); }
