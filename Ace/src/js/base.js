@@ -1,7 +1,7 @@
 /*
   JSPad - Javascript学習環境
   Author: M. Bando <bando@ktc.ac.jp>
-  Last modified: Tue 30 Oct 2018 12:34:47 JST
+  Last modified: Thu 15 Nov 2018 19:01:02 JST
 */
 
 var output, source, submit_button;
@@ -384,6 +384,16 @@ function sputs(str) {
 function gets(str,pre) { return prompt(str,pre); }
 function getn(str,pre) { return Number(prompt(str,pre)); }
 function puts(str) { output.val(output.val() + str + "\n"); }
+function print(str) { output.val(output.val() + str); }
+function floor(num) { return Math.floor(num); }
+function ceil(num) { return Math.ceil(num); }
+function round(num) { return Math.round(num); }
+function to_i(num) { return ~~(num); }
+function zeropad(num, len) { return (Array(len).join('0') + num).slice(-len); }
+function arraycopy(arr) { return JSON.prase(JSON.stringify(arr)); }
+
+function car(arr) { return arr[0];}
+function cdr(arr) {  }
 
 var interval = false;
 function setLoop(proc, wait) {
