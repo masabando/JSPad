@@ -44,6 +44,12 @@
       <h2 class="sec">ChangeLog</h2>
       <div class="text">
         <dl>
+          <dt>2018/11/15</dt>
+          <dd>
+            JSPad 2.3 リリース<br>
+            エディタにAceを利用。<br>
+            いくつかの関数を追加。
+          </dd>
           <dt>2017/08/14</dt>
           <dd>
             JSPad 1.3 リリース<br/>
@@ -304,7 +310,7 @@ setLoop(function() {
     </div>
 
     <div class="container">
-      <h2 class="sec">印刷</h2>
+      <h2 class="sec">印刷 (OBSOLETED)</h2>
       <div class="text">
         「印刷」ボタンを押すと、印刷ダイアログが出ます。<br/>
         画面全体ではなく、コード部分のみが印刷されます。
@@ -372,6 +378,9 @@ setLoop(function() {
           <tr><td class="tt">String</td>
             <td>文字列</td>
           </tr>
+          <tr><td class="tt">Array</td>
+            <td>配列</td>
+          </tr>
         </table>
 
         <h3>組み込み関数</h3>
@@ -382,6 +391,13 @@ setLoop(function() {
             msgが文字列でなければ、文字列に変換します。
           </dd>
 
+          <dt>prints<span class="normal">(<span class="sl">msg</span>)</span></dt>
+          <dd>
+            msgを出力領域に表示します。<br>
+            msgが文字列でなければ、文字列に変換します。<br>
+            putsと違い、改行しません。
+          </dd>
+
           <dt>gets<span class="normal">(<span class="sl">msg=undefined, pre=undefined</span>) -> String </span></dt>
           <dd>
             ポップアップによりユーザからの入力を文字列として受け取り、文字列のまま返します。<br/>
@@ -389,11 +405,44 @@ setLoop(function() {
             preはユーザ入力文字列の初期値であり、undefinedなら初期値を表示しません。
           </dd>
 
-          <dt>getn<span class="normal">(<span class="sl">msg=undefined, pre=undefined</span>) -> Num </span></dt>
+          <dt>getn<span class="normal">(<span class="sl">msg=undefined, pre=undefined</span>) -> Number </span></dt>
           <dd>
             ポップアップによりユーザからの入力を文字列として受け取り、数値に変換して返します。<br/>
             msgはポップアップに表示させる文字列であり、undefinedなら表示しません。<br/>
             preはユーザ入力数値の初期値であり、undefinedなら初期値を表示しません。
+          </dd>
+
+          <dt>floor<span class="normal">(<span class="sl">num</span>) -> Number </span></dt>
+          <dd>
+            数値num以下の最大の整数を返します。
+          </dd>
+
+          <dt>ceil<span class="normal">(<span class="sl">num</span>) -> Number </span></dt>
+          <dd>
+            数値num以上の最大の整数を返します。
+          </dd>
+
+          <dt>round<span class="normal">(<span class="sl">num</span>) -> Number </span></dt>
+          <dd>
+            数値numを四捨五入した整数を返します。
+          </dd>
+
+          <dt>to_i<span class="normal">(<span class="sl">num</span>) -> Number </span></dt>
+          <dd>
+            数値numの整数部分を返します。
+          </dd>
+
+          <dt>zeropad<span class="normal">(<span class="sl">num, len</span>) -> String </span></dt>
+          <dd>
+            数値numを、全体の長さがlenになるようゼロ埋めした文字列を返します。
+          </dd>
+
+          <dt>arraycopy<span class="normal">(<span class="sl">arr</span>) -> Array </span></dt>
+          <dd>
+            配列arrの複製(Deep Copy)を返します。<br>
+            JavaScriptでは、代入演算子での配列の複製は浅いコピー(Shallow Copy)となり、
+            実体はコピーされません。<br>
+            arraycopyを利用することで、完全な複製を作成できます。
           </dd>
 
           <dt>draw<span class="normal">(<span class="sl">width=undefined, height=undefined</span>)</span></dt>
